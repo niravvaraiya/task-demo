@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <table style="width:100%">
+                <tr>
+                  <th>BRAND</th>
+                  <th>DESCRIPTION</th>
+                  <th>IMAGE</th>
+                  <th></th>
+                </tr>
+                {%for p in pr%}
+                <tr>
+                  <td>{{p.brand}}</td>
+                  <td>{{p.discription}}</td>
+                  <td><img src="{{p.product_image.url}}"  style="width:200px;height:200px;"></td>
+                  <td><a href="{% url 'detail' p.id %}"><button type="submit">Detail</button></a></td>
+                </tr>
+                {% endfor %}
+              </table>
+    
+    
+    
+    
+</body>
+</html>

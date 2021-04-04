@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ShowCart</title>
+    <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 5px;
+            }
+            th {
+              text-align: left;
+            }
+            </style>
+</head>
+<body>
+        {% if request.user %}
+        <h3>Cart of {{request.user.username}}</h3>
+        {% endif %}
+    <table style="width:100%">
+        <tr>
+          <th>TITLE</th>
+         <th>DISCOUNT PRICE</th>
+          <th>QUANTITY</th>
+          <th>IMAGE</th>
+        </tr>
+        {% for cart in cart %}
+        <tr>
+          <td>{{cart.product.title}}</td>
+          <td>{{cart.product.discountprice}}</td>
+          <td>{{cart.quantity}}</td>
+          <td><img src={{cart.product.product_image.url}}  style="width:70px;height:50px;"></td>
+          <td><a href="{% url 'remove' cart.id %}"><input type="submit" value="Remove"></a></td>
+        </tr>
+        {% endfor %}
+
+      </table>
+
+    <h3>YOUR Total Amount {{total}}</h3>
+    <h3>YOUR Total Product {{item}}</h3>
+    <a href="{% url 'index' %}"><button type="submit">Home</button></a>
+    <br>
+---------------------------------------------------------------
+<h3>For Dispatch Detail</h3>
+{%for customer in customer%}
+<p>{{customer.name}}</p>
+<p>{{customer.locality}}</p>
+<p>{{customer.city}}</p>
+<p>{{customer.zipcode}}</p>
+<p>{{customer.phone_number}}</p>
+{% endfor %} 
+-----------------------------------------------------------------
+
+
+</body>
+</html>
